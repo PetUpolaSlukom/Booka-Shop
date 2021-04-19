@@ -1,0 +1,164 @@
+::-moz-selection {
+  background-color: #cd40e660;
+  color: #fff;
+}
+
+::selection {
+  background-color: #cd40e660;
+  color: #fff;
+}
+
+* {
+  font-family: Montserrat;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.8;
+  color: #616161;
+}
+
+body {
+  height: 2000px;
+}
+
+li > a {
+  font-weight: 700;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a.text-secondary:hover {
+  text-decoration: none;
+  color: #CD40E6 !important;
+}
+
+.p-50-0 {
+  padding: 50px 0px !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #191919;
+  font-weight: 900;
+}
+
+nav {
+  height: 80px;
+  position: fixed !important;
+  top: 0px;
+  width: 100%;
+  z-index: 5;
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+nav .navbar-toggler {
+  background-color: #cd40e660;
+}
+
+nav #korpa {
+  position: relative;
+}
+
+nav #korpa .cart-count {
+  padding: 1px 4px;
+  float: right;
+  border-radius: 10px;
+  color: white !important;
+  background-color: #CD40E6;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.help {
+  height: 80px;
+  width: 100%;
+}
+
+#responsive-meni {
+  display: none;
+  z-index: 1000;
+}
+
+.cena {
+  color: #CD40E6;
+  font-weight: 900;
+}
+
+#viseKnjiga {
+  background-color: #cd40e660;
+  color: #fff;
+  border: 2px solid #cd40e660;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+#viseKnjiga:hover {
+  background-color: #fff;
+  border-color: #CD40E6;
+  color: #191919;
+}
+
+.naslovna {
+  background: transparent url("../img/naslovna.jpg") 0% 0%/cover no-repeat fixed;
+  color: #fff;
+}
+
+.autor:hover, .bg-my {
+  background-color: #CD40E617;
+}
+
+.autor:hover {
+  cursor: pointer;
+}
+
+footer {
+  background-color: #191919;
+}
+
+footer h3 {
+  color: #fff;
+}
+
+footer img {
+  margin: 0px auto;
+}
+
+#knjige > div, #pretraga {
+  border: none;
+}
+
+#sort {
+  height: 50px;
+}
+
+.btn-act {
+  border-color: #CD40E6;
+  background-color: #CD40E6;
+}
+
+.btn-act span {
+  color: #fff;
+}
+
+.btn-deact {
+  border-color: #CD40E6;
+  background-color: #fff;
+}
+
+.btn-deact span {
+  color: #CD40E6;
+}
+
+@media screen and (max-width: 991px) {
+  .prikaz {
+    display: none;
+  }
+}
+/*# sourceMappingURL=style.css.map */

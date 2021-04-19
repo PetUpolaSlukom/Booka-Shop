@@ -1,0 +1,65 @@
+[
+    {
+        "id": 1,
+        "ime": "Marike Lukas Rejnefeld",
+        "domaciAutor": false,
+        "slika": "",
+        "uFokusu": false
+    },
+    {
+        "id": 2,
+        "ime": "Karl Uve Knausgor",
+        "domaciAutor": false,
+        "slika": "",
+        "uFokusu": false
+    },
+    {
+        "id": 3,
+        "ime": "Bekim Sejranović",
+        "domaciAutor": true,
+        "slika": "bekimSejranovic.jpg",
+        "uFokusu": true
+    },
+    {
+        "id": 4,
+        "ime": "Luka Tripković",
+        "domaciAutor": true,
+        "slika": "lukaTripkovic.jpg",
+        "uFokusu": false
+    },
+    {
+        "id": 5,
+        "ime": "Dženi Ofil",
+        "domaciAutor": false,
+        "slika": "dzeniOfil.jpg",
+        "uFokusu": true
+    },
+    {
+        "id": 6,
+        "ime": "Lana Bastašić",
+        "domaciAutor": true,
+        "slika": "lanaBastasic.jpg",
+        "uFokusu": true
+    },
+    {
+        "id": 7,
+        "ime": "Lisa Tadeo",
+        "domaciAutor": false,
+        "slika": "lisaTadeo.jpg",
+        "uFokusu": true
+    },
+    {
+        "id": 8,
+        "ime": "Pedro Mairal",
+        "domaciAutor": true,
+        "slika": "pedroMairal.jpg",
+        "uFokusu": true 
+    },
+    {
+        "id": 9,
+        "ime": "Rumena Buzarovska",
+        "domaciAutor": false,
+        "slika": "rumenaBuzarovska.jpg",
+        "uFokusu": true
+    }
+]

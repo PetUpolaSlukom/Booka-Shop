@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "naziv": "Drama"
+    },
+    {
+        "id": 2,
+        "naziv": "Nagrađene knjige"
+    },
+    {
+        "id": 3,
+        "naziv": "Ljubavni"
+    },
+    {
+        "id": 4,
+        "naziv": "Poezija"
+    },
+    {
+        "id": 5,
+        "naziv": "Naučna fantastika"
+    },
+    {
+        "id": 6,
+        "naziv": "Zbirke priča"
+    }
+]

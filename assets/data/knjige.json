@@ -1,0 +1,85 @@
+[
+    {
+        "id": 1,
+        "naslov": "Teskoba večeri",
+        "autorId" : 1,
+        "zanrovi" : [1, 2],
+        "cena": {
+            "original": "990",
+            "popust": "10"
+        },
+        "naStanju" : true,
+        "uFokusu": true,
+        "slika": {
+            "src": "teskobaVeceri.jpg",
+            "alt": "Teskoba večeri"
+        }
+    },
+    {
+        "id": 2,
+        "naslov": "U zimu",
+        "autorId" : 2,
+        "zanrovi" : [1],
+        "cena": {
+            "original": "990",
+            "popust": "10"
+        },
+        "naStanju" : true,
+        "uFokusu": true,
+        "slika": {
+            "src": "uZimu.jpg",
+            "alt": "U zimu"
+        }
+        },
+        {
+        "id": 3,
+        "naslov": "Crna knjiga",
+        "autorId" : 4,
+        "zanrovi" : [1, 3],
+        "cena": {
+            "original": "990",
+            "popust": "10"
+        },
+        "naStanju" : true,
+        "uFokusu": true,
+        "slika": {
+            "src": "crnaKnjiga.jpg",
+            "alt": "Crna knjiga"
+        }
+        
+    },
+        {
+        "id": 4,
+        "naslov": "Sandale",
+        "autorId" : 3,
+        "zanrovi" : [1],
+        "cena": {
+            "original": "891",
+            "popust": "20"
+        },
+        "naStanju" : true,
+        "uFokusu": true,
+        "slika": {
+            "src": "sandale.jpg",
+            "alt": "Sandale"
+        }
+        
+    },
+        {
+        "id": 5,
+        "naslov": "U jesen",
+        "autorId" : 2,
+        "zanrovi" : [1],
+        "cena": {
+            "original": "990",
+            "popust": "10"
+        },
+        "naStanju" : false,
+        "uFokusu": true,
+        "slika": {
+            "src": "uJesen.jpg",
+            "alt": "U jesen"
+        }
+        
+    }
+]

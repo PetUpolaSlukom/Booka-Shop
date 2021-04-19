@@ -1,0 +1,105 @@
+$pink: #CD40E6
+$trans-pink: #cd40e660
+$white: #fff
+$black: #191919
+::selection
+    background-color: $trans-pink
+    color: $white
+*
+    font-family: Montserrat
+    font-size: 15px
+    font-weight: 400
+    letter-spacing: 0
+    line-height: 1.8
+    color: #616161
+body
+    height: 2000px
+li > a
+    font-weight: 700
+ul 
+	list-style-type: none 
+a:link
+    text-decoration: none
+a.text-secondary:hover 
+    text-decoration: none 
+    color: $pink !important
+.p-50-0
+    padding: 50px 0px !important
+h1, h2, h3, h4, h5, h6
+    color: $black
+    font-weight: 900
+nav
+    height: 80px
+    position: fixed !important
+    top: 0px
+    width: 100%
+    z-index: 5
+    background-color: rgba(255, 255, 255, 0.95)
+    .navbar-toggler
+        background-color: $trans-pink
+    #korpa
+        position: relative
+        .cart-count
+            padding: 1px 4px
+            float: right
+            -webkit-border-radius: 10px
+            border-radius: 10px
+            color: white !important
+            background-color: $pink
+            font-size: 12px
+            font-weight: 700
+.help
+    height: 80px
+    width: 100%
+#responsive-meni
+	display: none 
+	z-index: 1000
+.cena
+    color: $pink
+    font-weight: 900
+#viseKnjiga
+    background-color: $trans-pink
+    color: $white
+    border: 2px solid $trans-pink
+    padding: 10px 20px
+    text-align: center
+    text-decoration: none
+    display: inline-block
+    &:hover
+        background-color: $white
+        border-color: $pink;
+        color: $black
+.naslovna
+    background: transparent url("../img/naslovna.jpg") 0% 0%/cover no-repeat fixed;
+    color: $white
+.autor:hover, .bg-my
+    background-color: #CD40E617
+.autor:hover
+    cursor: pointer
+footer
+    background-color: $black
+    h3
+        color: $white
+    img
+        margin: 0px auto
+
+// KNJIGE
+#knjige > div, #pretraga
+    border: none
+#sort
+    height: 50px
+.btn-act
+    border-color: $pink
+    background-color: $pink
+    span
+        color: $white
+.btn-deact
+    border-color: $pink
+    background-color: $white
+    span
+        color: $pink
+
+@media screen and (max-width: 991px) 
+    .prikaz
+        display: none
+  
