@@ -13,7 +13,7 @@ window.onload = () =>{
         dohvatiPodatke("autori", ispisAutoraUFokusu);
 	}
 	if(url.indexOf('knjige') != -1) {
-
+        promeniBrojURedu();
 	    dohvatiPodatke("zanrovi", prikaziZanrove);
     }
     if(url.indexOf('kontakt') != -1) {
@@ -285,30 +285,32 @@ window.onload = () =>{
 		}
 		return podaci;
 	}
-    document.querySelector('#prikaz3').addEventListener('click', function() {
-        var divovi = document.querySelectorAll('.prikazURedu');
-            for (let i = 0; i < divovi.length; i++) {
-                console.log(123);
-                divovi[i].classList.remove("col-lg-3");
-                divovi[i].classList.add("col-lg-4");
-            }
-        document.querySelector('#prikaz3').classList.remove('btn-deact');
-        document.querySelector('#prikaz3').classList.add('btn-act');
-        document.querySelector('#prikaz4').classList.remove('btn-act');
-        document.querySelector('#prikaz4').classList.add('btn-deact');
-    })
-    document.querySelector('#prikaz4').addEventListener('click', function() {
-        var divovi = document.querySelectorAll('.prikazURedu');
-            for (let i = 0; i < divovi.length; i++) {
-                console.log(123);
-                divovi[i].classList.remove("col-lg-4");
-                divovi[i].classList.add("col-lg-3");
-            }
-        document.querySelector('#prikaz4').classList.remove('btn-deact');
-        document.querySelector('#prikaz4').classList.add('btn-act');
-        document.querySelector('#prikaz3').classList.remove('btn-act');
-        document.querySelector('#prikaz3').classList.add('btn-deact');
-    })
+    function promeniBrojURedu() {
+        document.querySelector('#prikaz3').addEventListener('click', function() {
+            var divovi = document.querySelectorAll('.prikazURedu');
+                for (let i = 0; i < divovi.length; i++) {
+                    console.log(123);
+                    divovi[i].classList.remove("col-lg-3");
+                    divovi[i].classList.add("col-lg-4");
+                }
+            document.querySelector('#prikaz3').classList.remove('btn-deact');
+            document.querySelector('#prikaz3').classList.add('btn-act');
+            document.querySelector('#prikaz4').classList.remove('btn-act');
+            document.querySelector('#prikaz4').classList.add('btn-deact');
+        })
+        document.querySelector('#prikaz4').addEventListener('click', function() {
+            var divovi = document.querySelectorAll('.prikazURedu');
+                for (let i = 0; i < divovi.length; i++) {
+                    divovi[i].classList.remove("col-lg-4");
+                    divovi[i].classList.add("col-lg-3");
+                }
+            document.querySelector('#prikaz4').classList.remove('btn-deact');
+            document.querySelector('#prikaz4').classList.add('btn-act');
+            document.querySelector('#prikaz3').classList.remove('btn-act');
+            document.querySelector('#prikaz3').classList.add('btn-deact');
+        })
+    }
+    
 
     function promenaFiltera(){
 		dohvatiPodatke("knjige", prikaziKnjige);
