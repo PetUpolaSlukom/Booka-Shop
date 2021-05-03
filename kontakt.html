@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Autor | Booka Store</title>
+    <link rel="shortcut icon" href="assets/img/icon.ico" type="image/ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <!--<meta name="keywords" content="gavaltron, prodaja, namestaja, kontakt, cena"/>
+	    <meta name="description" content="Mi menjamo način izrade nameštaja, povezujući kupce sa lokalnim proizvođačima."> -->
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark d-flex justify-content-around">
+        <div id="responsive-meni" class="w-100 position-absolute d-md-none">
+          <ul id="responsive-meni-ul" class="navbarMenu-ul bg-light w-100 text-center">
+              
+          </ul>
+        </div>
+    
+        <button class="navbar-toggler">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a href="index.html" class="navbar-brand"><img src="assets/img/logo.png" class="mw-100" alt="logo"/></a>
+    
+        <div class="collapse navbar-collapse nav-pills col-md-4" id="navbarMenu">
+            <ul id="nav-meni-ul" class="navbarMenu-ul navbar-nav container justify-content-around">
+                
+            </ul> 
+        </div>
+        <button type="button" id="korpa" class="btn btn-lg" data-toggle="modal" data-target=".bd-example-modal-lg">
+            <span class="fa fa-shopping-cart" aria-hidden="true"></span>
+            <span class="cart-count">0</span>
+        </button>
+    </nav>
+    <div class="help"></div>
+
+
+    <div class="naslovna-pozadina col-12 p-50-0">
+        <span class="col-12 text-center align-middle p-50-0">
+            <h1 class="p-50-0 text-white">KONTAKT</h1>
+        </span>
+    </div>
+
+    <div class="d-flex justify-content-around flex-wrap py-5 m-0">
+        <h1 class="col-12 text-center py-5">Kontaktiraj nas u bilo kom trenutku</h1>
+        <div id="kontaktInfo" class="col-7 col-md-4 py-5">
+            <h2 class="col-12 mb-5">Kontakt informacije</h2>
+            <div class="container-fluid col-12">
+                <ul id="kontaktInfoLista">
+                    <li class="py-3 d-flex align-items-center">
+                        <span class="cena mr-4 fas fa-map-marked-alt"></span> Cara Dušana 16, Beograd
+                    </li>
+                    <li class="py-3 d-flex align-items-center">
+                        <span class="cena mr-4 fas fa-map-marked-alt"></span> Milana Rakića 77, Beograd
+                    </li>
+                    <li class="py-3 d-flex align-items-center">
+                        <span class="cena mr-4 far fa-clock"></span>Radnim danima od 10:00 do 21:00
+                    </li>
+                    <li class="py-3 d-flex align-items-center">
+                        <span class="cena fas fa-phone mr-3"></span><a class="cena" href="tel:+381694301312">+381 69 420 1312</a>
+                    </li>
+                    <li class="py-3 d-flex align-items-center">
+                        <span class="cena fas fa-envelope mr-3"></span><a class="cena" href="mailto:djordje.minic.135.19@ict.edu.rs">bookastore@gmail.com</a>
+                    </li>
+                </ul>   
+            </div>
+        </div>
+        <div id="kontaktPoruka" class="col-10 col-md-4 py-5">
+            <h2 class="col-12 mb-5">Pošalji nam poruku</h2>
+            <div class="container-fluid col-12">
+                <div>
+                    <input type="text" name="name" id="name" class="container brd-none  py-3" placeholder="Ime i prezime">
+                </div>
+                <div>
+                    <input type="email" name="mail" id="mail" class="container brd-none   py-3 mt-2" placeholder="Email">
+                </div>
+                <div>
+                    <textarea name="text" id="text" cols="22" maxlength="200" rows="5" class="container brd-none   py-3 mt-2" placeholder="Tekst poruke..."></textarea>
+                </div>
+                <div class="d-flex align-items-center flex-column py-3">
+                    <input type="submit" id="button" class="btn linkBtn" value="Pošalji">
+                </div>      
+            </div>
+            
+        </div>
+        
+    </div>
+
+    
+
+    <footer class="col-12 d-flex justify-content-around">
+        <div class="col-9 d-flex flex-wrap justify-content-around">
+            <div class="col-sm-3 pt-5">
+                <h3 calss="text-white">MENI</h3>
+                <ul id="footer-meni-ul" class="navbarMenu-ul navbar-nav container d-inline">
+                    
+                </ul> 
+            </div>
+            <div class="col-sm-3 pt-5">
+                <h3 calss="text-white">LINKOVI</h3>
+                <ul id="links" class="navbarMenu-ul navbar-nav container">
+
+                </ul> 
+            </div>    
+            <div class="col-sm-3 col-10 pt-5 text-center">
+                <h3 calss="text-white">BOOKA STORE</h3>
+                <a href="index.html"><img class="img-fluid pt-4 pb-4" src="assets/img/logoKrug.png" alt="Booka"></a>  
+                <p class="cena">Đorđe Minić 135 / 19</p>
+            </div>
+        </div>
+        
+    </footer>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

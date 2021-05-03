@@ -17,8 +17,11 @@
   color: #616161;
 }
 
-body {
-  height: 2000px;
+mark {
+  background-color: #fff;
+  color: #CD40E6;
+  font-weight: 900;
+  font-size: 30px;
 }
 
 li > a {
@@ -89,7 +92,7 @@ nav #korpa .cart-count {
   font-weight: 900;
 }
 
-#viseKnjiga {
+.linkBtn {
   background-color: #cd40e660;
   color: #fff;
   border: 2px solid #cd40e660;
@@ -99,10 +102,10 @@ nav #korpa .cart-count {
   display: inline-block;
 }
 
-#viseKnjiga:hover {
+.linkBtn:hover {
   background-color: #fff;
   border-color: #CD40E6;
-  color: #191919;
+  color: #CD40E6;
 }
 
 .naslovna {
@@ -166,5 +169,23 @@ footer img {
   background: #e7a5c9;
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(205, 64, 230, 0.708158)), to(rgba(228, 167, 203, 0.677259)));
   background: linear-gradient(180deg, rgba(205, 64, 230, 0.708158) 0%, rgba(228, 167, 203, 0.677259) 100%);
+}
+
+#mreze > a > i {
+  font-size: 30px;
+}
+
+#mreze > a > i:hover {
+  color: #CD40E6;
+}
+
+.brd-none {
+  border: none;
+  border-bottom: 1px solid #CD40E6;
+  border-color: #CD40E6;
+}
+
+#kontaktInfoLista > li > span {
+  font-size: 20px;
 }
 /*# sourceMappingURL=style.css.map */

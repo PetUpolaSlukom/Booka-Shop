@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Booka Store</title>
+    <title>Knjige | Booka Store</title>
     <link rel="shortcut icon" href="assets/img/icon.ico" type="image/ico">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous"/>
@@ -62,13 +62,13 @@
                         
 
                         
-                        <h2 class="col-12 p-0">PRIKAZ</h2>
-                            <button id="prikaz3" value="3" class="btn-act p-3 col-5">
-                                <span class="font-weight-bold">Tri u redu</span>
-                            </button>
-                            <button id="prikaz4" value="4" class="mb-5 p-3 btn-deact col-6">
-                                <span class="font-weight-bold">Cetiri u redu</span>
-                            </button>
+                        <h2 class="col-12 p-0 prikaz">PRIKAZ</h2>
+                        <button id="prikaz3" value="3" class="btn-act p-3 col-5 prikaz">
+                            <span class="font-weight-bold">Tri u redu</span>
+                        </button>
+                        <button id="prikaz4" value="4" class="mb-5 p-3 btn-deact col-6 prikaz">
+                            <span class="font-weight-bold">Cetiri u redu</span>
+                        </button>
                         
 
                         <!-- PRETRAGA -->
@@ -91,7 +91,7 @@
                         
                         <h2>DOSTUPNOST</h2>
                         <ul class="list-group mb-5 col-12 p-0" id="naStanju">
-                            <li class="list-group-item">
+                            <li class="list-group-item border border-0">
                                 <input type="radio" value="dostupno" class="stanje mb-2" name="stanje" id="btnNaStanju">Trenutno dostupne<br>
                                 <input type="radio" value="nedostupno" class="stanje" name="stanje" id="btnNijeNaStanju">Trenutno nedostupne
                             </li>

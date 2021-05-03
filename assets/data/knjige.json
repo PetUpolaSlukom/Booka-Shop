@@ -3,7 +3,7 @@
         "id": 1,
         "naslov": "Teskoba večeri",
         "autorId" : 1,
-        "zanrovi" : [1, 2],
+        "zanrovi" : [2],
         "cena": {
             "original": "990",
             "popust": "10"
@@ -79,6 +79,95 @@
         "slika": {
             "src": "uJesen.jpg",
             "alt": "U jesen"
+        }
+        
+    },
+        {
+        "id": 6,
+        "naslov": "Zavod za nagadjanje",
+        "autorId" : 5,
+        "zanrovi" : [3, 4],
+        "cena": {
+            "original": "693",
+            "popust": "10"
+        },
+        "naStanju" : true,
+        "uFokusu": false,
+        "slika": {
+            "src": "zavodZaNagadjanje.jpg",
+            "alt": "Zavod za nagadjanje"
+        }
+        
+    }
+    ,
+        {
+        "id": 7,
+        "naslov": "Uhvati zeca",
+        "autorId" : 6,
+        "zanrovi" : [1, 3],
+        "cena": {
+            "original": "693",
+            "popust": "15"
+        },
+        "naStanju" : true,
+        "uFokusu": false,
+        "slika": {
+            "src": "uhvatiZeca.jpg",
+            "alt": "Uhvati zeca"
+        }
+        
+    }
+    ,
+        {
+        "id": 8,
+        "naslov": "Urugvajka",
+        "autorId" : 8,
+        "zanrovi" : [6],
+        "cena": {
+            "original": "693",
+            "popust": "15"
+        },
+        "naStanju" : true,
+        "uFokusu": false,
+        "slika": {
+            "src": "urugvajka.jpg",
+            "alt": "Urugvajka"
+        }
+        
+    }
+    ,
+        {
+        "id": 9,
+        "naslov": "Tri žene",
+        "autorId" : 7,
+        "zanrovi" : [1, 5],
+        "cena": {
+            "original": "990",
+            "popust": "15"
+        },
+        "naStanju" : false,
+        "uFokusu": false,
+        "slika": {
+            "src": "triZene.jpg",
+            "alt": "Tri žene"
+        }
+        
+    }
+    ,
+        {
+        "id": 10,
+        "naslov": "Osmica",
+        "autorId" : 8,
+        "zanrovi" : [2],
+        "cena": {
+            "original": "693",
+            "popust": "15"
+        },
+        "naStanju" : true,
+        "uFokusu": false,
+        "slika": {
+            "src": "osmica.jpg",
+            "alt": "Osmica"
         }
         
     }

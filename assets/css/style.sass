@@ -12,8 +12,11 @@ $black: #191919
     letter-spacing: 0
     line-height: 1.8
     color: #616161
-body
-    height: 2000px
+mark
+    background-color: $white
+    color: $pink
+    font-weight: 900
+    font-size: 30px
 li > a
     font-weight: 700
 ul 
@@ -57,7 +60,7 @@ nav
 .cena
     color: $pink
     font-weight: 900
-#viseKnjiga
+.linkBtn
     background-color: $trans-pink
     color: $white
     border: 2px solid $trans-pink
@@ -68,7 +71,7 @@ nav
     &:hover
         background-color: $white
         border-color: $pink;
-        color: $black
+        color: $pink
 .naslovna
     background: transparent url("../img/naslovna.jpg") 0% 0%/cover no-repeat fixed;
     color: $white
@@ -106,3 +109,13 @@ footer
     //height: 250px !important
     background: rgb(231,165,201);
     background: linear-gradient(180deg, rgba(205,64,230,0.7081578286846033) 0%, rgba(228,167,203,0.6772589522801089) 100%);
+#mreze > a > i
+    font-size: 30px
+    &:hover
+        color: $pink
+.brd-none
+    border: none
+    border-bottom: 1px solid $pink
+    border-color: $pink
+#kontaktInfoLista > li > span
+    font-size: 20px

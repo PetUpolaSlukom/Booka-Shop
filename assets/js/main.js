@@ -132,7 +132,7 @@ window.onload = () =>{
         }
         if (uFokusu) {
             html += `<div class="col-12 d-flex justify-content-around mt-5">
-                        <a href="index.html" id="viseKnjiga">Prikaži sve</a>
+                        <a href="knjige.html" class="linkBtn">Prikaži sve</a>
                     </div>`
         }
         $("#uFokusu").html(html);
@@ -165,7 +165,7 @@ window.onload = () =>{
     function prikaziZanrove(data){
 		let html = "";
 		data.forEach(zanr => {
-			html += `<li class="list-group-item">
+			html += `<li class="list-group-item border border-0">
 					   <input type="checkbox" value="${zanr.id}" class="zanr" name="zanrovi"/> ${zanr.naziv}
 					</li>`;
 		});
@@ -179,7 +179,7 @@ window.onload = () =>{
 	function prikaziPisce(podaci){
 		let html = "";
 		podaci.forEach(autor => {
-			html += `<li class="list-group-item">
+			html += `<li class="list-group-item border border-0">
 					   <input type="checkbox" value="${autor.id}" class="pisac" name="pisci"/> ${autor.ime}
 					</li>`;
 		});
@@ -200,15 +200,16 @@ window.onload = () =>{
 			html+= `
 			<div class="col-lg-4 col-md-6 mb-4 prikazURedu">
             <div class=" h-100">
-              <img class="card-img-top" src="assets/img/${knjiga.slika.src}" alt="${knjiga.slika.alt}">
-              <div class="card-body">
-                <h4>${knjiga.naslov.toUpperCase()}</h3>
-				${prikazAutor(knjiga.autorId)}
-                ${prikazCena(knjiga.cena)}
-				<p  class="font-weight-bold" id="categories">
-					${prikazZanrovi(knjiga.zanrovi)}
-				</p>
-              </div>
+                <img class="card-img-top" src="assets/img/${knjiga.slika.src}" alt="${knjiga.slika.alt}">
+                <div class="card-body">
+                    <h4>${knjiga.naslov.toUpperCase()}</h3>
+                    ${prikazAutor(knjiga.autorId)}
+                    ${prikazCena(knjiga.cena)}
+                    <p  class="font-weight-bold" id="categories">
+                        ${prikazZanrovi(knjiga.zanrovi)}
+                    </p>
+                    ${dodajUKorpu(knjiga.naStanju)}
+                </div>
             </div>
           </div>`;
 		}
@@ -232,6 +233,12 @@ window.onload = () =>{
 		}
 		return html;
 	}
+    function dodajUKorpu(stanje) {
+        if (stanje) {
+            return '<a href="#" class="btn linkBtn btn-lg p-2" role="button">Dodaj u korpu</a>'
+        }
+        return '<a href="#" class="btn btn-outline-secondary btn-lg disabled p-2" role="button" aria-disabled="true">Nije na stanju</a>'
+    }
     function pisacFilter(podaci){
 		let selectedPisci = [];
 		$('.pisac:checked').each(function(el){
