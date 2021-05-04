@@ -1,6 +1,7 @@
 window.onload = () =>{
 
     ispisHeaderFooter();
+    brojStavkiUKorpi();
 
     
 	$("#pretraga").keyup(promenaFiltera);
@@ -95,7 +96,7 @@ window.onload = () =>{
             if (autor.uFokusu) {
                 html+= `
                 
-                    <div class="text-center col-9 col-sm-6 col-md-4 col-xl-2 brd-none mb-5 autor">
+                    <div class="text-center col-9 col-sm-6 col-md-4 col-xl-2  mb-5 autor">
                         <img class="card-img-top rounded-circle mx-auto col-8 mb-3 p-4" src="assets/img/${autor.slika}" alt="${autor.ime}">
                         <div class="pb-4">
                             <p class="text-secondary">${autor.ime}</p>
@@ -198,20 +199,21 @@ window.onload = () =>{
 		let html = "";
 		for(let knjiga of podaci){
 			html+= `
-			<div class="col-lg-4 col-md-6 mb-4 prikazURedu">
-            <div class=" h-100">
-                <img class="card-img-top" src="assets/img/${knjiga.slika.src}" alt="${knjiga.slika.alt}">
-                <div class="card-body">
-                    <h4>${knjiga.naslov.toUpperCase()}</h3>
-                    ${prikazAutor(knjiga.autorId)}
-                    ${prikazCena(knjiga.cena)}
-                    <p  class="font-weight-bold" id="categories">
-                        ${prikazZanrovi(knjiga.zanrovi)}
-                    </p>
-                    ${dodajUKorpu(knjiga.naStanju)}
+			<div class="col-lg-4 col-sm-6 col-10 mb-4 prikazURedu">
+                <div class=" h-100">
+                    <img class="card-img-top" src="assets/img/${knjiga.slika.src}" alt="${knjiga.slika.alt}">
+                    <div class="card-body">
+                        <h4>${knjiga.naslov.toUpperCase()}</h3>
+                        ${prikazAutor(knjiga.autorId)}
+                        ${prikazCena(knjiga.cena)}
+                        <p  class="font-weight-bold" id="categories">
+                            ${prikazZanrovi(knjiga.zanrovi)}
+                        </p>
+                        ${dodajUKorpu(knjiga.naStanju, knjiga.id)}
+                        <h6 id="dodatoSpan${knjiga.id}" class="my-2 cena"></h6>
+                    </div>
                 </div>
-            </div>
-          </div>`;
+            </div>`;
 		}
 		if(!podaci.length){
 			html += `<h2 class='text-center col-12'>Uuups!</h2>
@@ -221,7 +223,97 @@ window.onload = () =>{
                 </div>`;
 		}
 		$("#knjige").html(html);
+        $(".dodajUKorpuBtn").click(dodavanjeKnjigeUKorpu);
 	}
+    // LOCAL STORAGE
+    function dodavanjeKnjigeUKorpu() {
+        let id = $(this).data('id');
+
+        var knjigeUKorpi = uzmiIzLS('knjigeKorpa');
+        if (knjigeUKorpi) {
+            if (postojiUKorpi()) {
+                dodajKolicinu();
+            }
+            else{
+                dodajUKorpu();
+            }
+        }
+        else{
+            dodajPrvuUKorpu();
+        }
+
+        function postojiUKorpi() {
+            for (obj of knjigeUKorpi) {
+                if (obj.id == id) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        function dodajKolicinu() {
+            let izKorpe = uzmiIzLS('knjigeKorpa');
+            for (let i=0; i<izKorpe.length; i++) {
+                if (izKorpe[i].id == id) {
+                    izKorpe[i].kolicina++;
+                }
+            }
+            dodajULS("knjigeKorpa", izKorpe);
+        }
+        function dodajUKorpu() {
+            let izKorpe = uzmiIzLS('knjigeKorpa');
+            let novaKnjiga = {
+                id: id,
+                kolicina: 1
+            }
+            izKorpe.push(novaKnjiga);
+            dodajULS("knjigeKorpa", izKorpe);
+        }
+        function dodajPrvuUKorpu() {
+            let knjige = [];
+            knjige[0] = {
+                id : id,
+                kolicina : 1
+            };
+
+            dodajULS("knjigeKorpa", knjige);
+        }
+        
+        brojStavkiUKorpi();
+        obavestenjeDodato(id);
+        
+
+    }
+    function uzmiIzLS(name) {
+        return JSON.parse(localStorage.getItem(name));
+    }
+    function dodajULS(name, podaci) { //33.41
+        localStorage.setItem(name, JSON.stringify(podaci))
+    }
+    function brojStavkiUKorpi() {
+        let izKorpe = uzmiIzLS('knjigeKorpa');
+        let count = 0;
+        for (i in izKorpe) {
+            count += izKorpe[i].kolicina;
+        }
+        $(".cart-count").html(count);
+    }   
+    function obavestenjeDodato(id) {
+        let idSpana = "#dodatoSpan"+id;
+        $(idSpana).html("Uspešno dodato u korpu!");
+
+        nestajanjeObavestenja(idSpana);
+    }
+    function nestajanjeObavestenja(id){
+        setTimeout(function(){
+            $(id).html("");
+
+        }, 3000);
+    }
+
+
+
+
+
     function prikazZanrovi(ids){
 		let html = "";
 		let zanroviKnjige = zanrovi.filter(c => ids.includes(c.id));
@@ -233,11 +325,11 @@ window.onload = () =>{
 		}
 		return html;
 	}
-    function dodajUKorpu(stanje) {
+    function dodajUKorpu(stanje, id) {
         if (stanje) {
-            return '<a href="#" class="btn linkBtn btn-lg p-2" role="button">Dodaj u korpu</a>'
+            return `<button type="button" class="dodajUKorpuBtn btn linkBtn btn-lg p-2" data-id="${id}">Dodaj u korpu</button>`
         }
-        return '<a href="#" class="btn btn-outline-secondary btn-lg disabled p-2" role="button" aria-disabled="true">Nije na stanju</a>'
+        return `<button type="button" class="btn btn-outline-secondary btn-lg disabled p-2"  data-id="${id}" disabled>Nije na stanju</button>`
     }
     function pisacFilter(podaci){
 		let selectedPisci = [];
@@ -317,10 +409,86 @@ window.onload = () =>{
             document.querySelector('#prikaz3').classList.add('btn-deact');
         })
     }
-    
-
     function promenaFiltera(){
 		dohvatiPodatke("knjige", prikaziKnjige);
 	}
+
+
+
+
+
+    // VALIDACIJA FORME
+    
+    function resetovanjeForme(forma){
+        $(".forma-greska").remove();
+        $(".forma-uspeh").remove();
+
+    }
+    function greska(element, poruka){
+        $(`<span class="forma-greska text-danger">${poruka}</span>`).insertAfter($(element));
+    }
+    function uspesno(forma, element, poruka) {
+        $(`<span class="forma-uspeh">${poruka}</span>`).insertAfter($(element));
+        forma.reset();
+
+    }
+    function inputPrazno(element, naziv){
+        if(element.value.length == 0){
+            greska(element,`Polje za ${naziv} ne sme biti prazno.`);
+            return true;
+        }
+        return false;
+    }
+    let regImePrezime = /^[A-ZŠĐŽĆČ][a-zšđžćč]{2,15}(\s[A-ZŠĐŽĆČ][a-zšđžćč]{2,15}){0,2}$/;
+    let regEmail = /^[a-z]((\.|-|_)?[a-z0-9]){2,}@[a-z]((\.|-|_)?[a-z0-9]+){2,}\.[a-z]{2,6}$/i;
+
+
+    //KONTAKT STRANA
+    $(document.kontakt).on("submit", function(event){
+        validirajKontakt(event);
+    });
+
+    function validirajKontakt(event){
+        event.preventDefault();
+        resetovanjeForme(document.kontakt);
+                
+        let indikatorGreske = false;
+
+        //Ime i Prezime
+        if(inputPrazno(document.kontakt.name, "ime i prezime")){
+            indikatorGreske = true;
+        }
+        else {
+            if(!regImePrezime.test(document.kontakt.name.value)){
+                greska(document.kontakt.name,"Ime i prezime nisu dobro napisani.");
+                indikatorGreske = true;
+            }
+        }
+        
+        //Email
+        if(inputPrazno(document.kontakt.mail, "email adresu")){
+            indikatorGreske = true;
+        }
+        else {
+            if(!regEmail.test(document.kontakt.mail.value)){
+                greska(document.kontakt.mail,"Imejl adresa nije dobro napisana.");
+                indikatorGreske = true;
+            }
+        }
+        
+        //Poruka
+        if(inputPrazno(document.kontakt.text, "poruku")){
+            indikatorGreske = true;
+        }
+        else {
+            if(document.kontakt.text.value.length < 20){
+                greska(document.kontakt.text,"Poruka mora sadržati bar 20 karaktera.");
+                indikatorGreske = true;
+            }
+        }
+        if(!indikatorGreske){
+            uspesno(document.kontakt, $("#button"), "Uspešno ste poslali poruku.");
+        }
+    }
     
 }

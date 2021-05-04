@@ -67,7 +67,7 @@ nav #korpa {
   position: relative;
 }
 
-nav #korpa .cart-count {
+nav #korpa #cart-count {
   padding: 1px 4px;
   float: right;
   border-radius: 10px;
@@ -185,7 +185,8 @@ footer img {
   border-color: #CD40E6;
 }
 
-#kontaktInfoLista > li > span {
-  font-size: 20px;
+.b-box {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 /*# sourceMappingURL=style.css.map */
