@@ -10,19 +10,25 @@ window.onload = () =>{
 
 
     let url = window.location.pathname;
-    if(url == '/' || url == '/index.html') {
-        dohvatiPodatke("autori", ispisAutoraUFokusu);
-	}
+    // if(url == '/' || url == '/index.html') {
+    //     dohvatiPodatke("autori", ispisAutoraUFokusu);
+	// }
 	if(url.indexOf('knjige') != -1) {
         promeniBrojURedu();
 	    dohvatiPodatke("zanrovi", prikaziZanrove);
     }
-    if(url.indexOf('kontakt') != -1) {
+    else if(url.indexOf('kontakt') != -1) {
 
     }
-    if(url.indexOf('autor') != -1) {
+    else if(url.indexOf('autor') != -1) {
 
 	}
+    else if(url.indexOf('korpa') != -1) {
+
+	}
+    else{
+        dohvatiPodatke("autori", ispisAutoraUFokusu);
+    }
 
 
 
