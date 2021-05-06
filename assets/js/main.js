@@ -358,6 +358,7 @@ window.onload = () =>{
             dohvatiPodatke("knjige", obradaKorpe);
             function obradaKorpe(podaci) {
                 ispisiKnjigeIzKorpe(podaci, izKorpe);
+                ispisNarucivanje(podaci, izKorpe);
             }
             function ispisiKnjigeIzKorpe(podaci, podaciLS){
                 let knjigeKorpa = podaciLS;
@@ -369,14 +370,33 @@ window.onload = () =>{
                                     <th scope="row" class="align-middle text-dark"><button class="obrisiIzKorpe brd-none" data-id="${objKnjiga.id}" ><i  class="fas fa-trash-alt align-center"></i></button></th>
                                     <td class="align-middle text-dark w-25"><img class="w-25" src="assets/img/${objKnjiga.slika.src}" alt="${objKnjiga.slika.alt}"></td>
                                     <td class="align-middle text-dark">${objKnjiga.naslov}</td>
-                                    <td class="align-middle text-dark">${prikazCenaKorpa(objKnjiga.cena)}</td>
+                                    <td class="align-middle text-dark">${prikazCenaKorpa(objKnjiga.cena)},00 RSD</td>
                                     <td class="align-middle text-dark"><input class="pl-2 kolicina" data-id="${objKnjiga.id}"" type="number" min="1" max="99" step="1" value="${objLS.kolicina}"></td>
-                                    <td class="align-middle text-dark">${objLS.kolicina*prikazCenaKorpa(objKnjiga.cena)}</td>
+                                    <td class="align-middle text-dark">${objLS.kolicina*prikazCenaKorpa(objKnjiga.cena)},00 RSD</td>
                                 </tr>`;
                         }
                     }
                 }
                 $("#tbody").html(html);
+            }
+            
+            function ispisNarucivanje(podaci, podaciLS) {
+                let knjigeKorpa = podaciLS;
+                let sveKnjige = podaci;
+                let cenaKnjiga = 0;
+                let cenaDostave = 99;
+
+                for (objLS of knjigeKorpa) {
+                    for (objKnjiga of sveKnjige) {
+                        if (objLS.id == objKnjiga.id) {
+                            cenaKnjiga += objLS.kolicina*prikazCenaKorpa(objKnjiga.cena)
+                        }
+                    }
+                }
+                
+                $("#cenaNarucenihKnjiga").html(cenaKnjiga+',00 RSD');
+                $("#cenaDostave").html('Fiksna cena dostave je: '+ cenaDostave +',00 RSD');
+                $("#ukupanTrosak").html(cenaDostave + cenaKnjiga+',00 RSD');
             }
             
             function prikazCenaKorpa(cena) {
@@ -390,8 +410,17 @@ window.onload = () =>{
                     return original;
                 }
             }
+
+            $("#buttonObrisiKorpu").on('click', function() {
+                localStorage.removeItem('knjigeKorpa');
+                korpaIspis();
+                brojStavkiUKorpi();
+                $("#korpaNarucivanje").html('');
+            })
         }
     }
+
+
     function obrisiIzKorpe(id) {
         let izKorpe = uzmiIzLS('knjigeKorpa');
 
@@ -400,7 +429,6 @@ window.onload = () =>{
         dodajULS("knjigeKorpa", rezultat);
         korpaIspis();
         brojStavkiUKorpi();
-
     }
 
 

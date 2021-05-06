@@ -68,6 +68,56 @@
                 </tbody>
             </table>
         </div>
+        <div class="d-flex align-items-center flex-column py-3 mt-5">
+            <input type="button" id="buttonObrisiKorpu" class="btn linkBtn float-left" value="Završi porudžbinu">
+        </div>
+    </div>
+    <div class="col-12 p-50-0 d-flex flex-wrap justify-content-around" id="korpaNarucivanje">
+        <div class="col-md-5 col-12 container p-50-0">
+            <h2 class="mb-5">VAŠ UKUPNI TROŠAK</h2> 
+            <table class="table table-hover table-striped">
+                <thead class="bg-dark">
+                    <tr>
+                        <th scope="col" class=" text-light"> </th>
+                        <th scope="col" class=" text-light"> </th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyNarucivanje">
+                    <tr>
+                        <td class="text-dark text-center">Međuzbir</td>
+                        <td id="cenaNarucenihKnjiga" class="text-dark text-right"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-dark text-center">Dostava</td>
+                        <td id="cenaDostave"  class="text-dark text-right"></td>
+                    </tr>
+                    <tr>
+                        <td class="cena text-center">Ukupno</td>
+                        <td  id="ukupanTrosak" class="cena text-right"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-5 col-12 container p-50-0">
+            <h2>PODACI ZA PLAĆANJE</h2> 
+            <form name="kontakt" id="porucivanje" class="col-12 py-5" method="GET" action="#">
+                <div class="container-fluid col-12">
+                    <div>
+                        <input type="text" name="name" id="namePorucivanje" class="container brd-none  py-3" placeholder="Ime i prezime">
+                    </div>
+                    <div>
+                        <input type="email" name="mail" id="mailPorucivanje" class="container brd-none   py-3 mt-2" placeholder="Email">
+                    </div>
+                    <div>
+                        <input type="text" id="adresaPorucivanje" class="container brd-none py-3 mt-2" placeholder="Adresa i Grad">
+                    </div>
+                    <div class="d-flex align-items-center flex-column py-3 mt-5">
+                        <input type="submit" id="button" class="btn linkBtn" value="Završi porudžbinu">
+                    </div>      
+                </div>
+                
+            </form>
+        </div>
     </div>
     
 
