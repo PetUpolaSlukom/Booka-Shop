@@ -33,7 +33,7 @@
                 
             </ul> 
         </div>
-        <a href="korpa.html">
+        <a id="korpaLink"  href="korpa.html">
             <button type="button" id="korpa" class="btn btn-lg">
                 <span class="fa fa-shopping-cart" aria-hidden="true"></span>
                 <span class="cart-count">0</span>
@@ -48,9 +48,9 @@
             <h1 class="p-50-0 text-white">KNJIGE</h1>
         </span>
     </div>
-    <div class="col-12 min-vh-100 p-50-0">
-        <div class="col-12">
-            <div class="col-lg-12">
+    <div id="knjigeMain" class="min-vh-100 m-0-auto p-50-0 d-flex justify-content-around">
+        <div class="col-xl-10">
+            <div class="col-12">
                 <div class="row">
                     <div class="col-lg-3">
 
@@ -65,10 +65,10 @@
 
                         
                         <h2 class="col-12 p-0 prikaz">PRIKAZ</h2>
-                        <button id="prikaz3" value="3" class="btn-act p-3 col-5 prikaz">
+                        <button id="prikaz3" value="3" class="btn-deact p-3 col-5 prikaz">
                             <span class="font-weight-bold">Tri u redu</span>
                         </button>
-                        <button id="prikaz4" value="4" class="mb-5 p-3 btn-deact col-6 prikaz">
+                        <button id="prikaz4" value="4" class="mb-5 p-3 btn-act col-6 prikaz">
                             <span class="font-weight-bold">Cetiri u redu</span>
                         </button>
                         
@@ -93,9 +93,14 @@
                         
                         <h2>DOSTUPNOST</h2>
                         <ul class="list-group mb-5 col-12 p-0" id="naStanju">
-                            <li class="list-group-item border border-0">
-                                <input type="radio" value="dostupno" class="stanje mb-2" name="stanje" id="btnNaStanju">Trenutno dostupne<br>
-                                <input type="radio" value="nedostupno" class="stanje" name="stanje" id="btnNijeNaStanju">Trenutno nedostupne
+                            <li class="list-group-item border border-0 pb-0">
+                                <input type="radio" value="sve" class="stanje" name="stanje" id="sve" checked> Sve
+                            </li>
+                            <li class="list-group-item border border-0 pb-0">
+                                <input type="radio" value="dostupno" class="stanje mb-2" name="stanje" id="btnNaStanju"> Dostupne<br>
+                            </li>
+                            <li class="list-group-item border border-0 pb-0">
+                                <input type="radio" value="nedostupno" class="stanje" name="stanje" id="btnNijeNaStanju"> Nedostupne
                             </li>
                         </ul>
                     </div>

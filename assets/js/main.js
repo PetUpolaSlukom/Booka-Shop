@@ -7,12 +7,35 @@ window.onload = () =>{
 	$("#pretraga").keyup(promenaFiltera);
 	$("#sort").change(promenaFiltera);
 	$(".stanje").change(promenaFiltera);
+    $(document).on("click",".obrisiIzKorpe",function(){
+        obrisiIzKorpe($(this).data('id'));
+    });
+    $(document).on("change",".kolicina",function(){
+        promenaKolicine($(this).data('id'), $(this).val());
+    });
+
+    function promenaKolicine(id, val) {
+        let newValue = parseInt(val);
+        let izKorpe = uzmiIzLS('knjigeKorpa');
+            for (let i=0; i<izKorpe.length; i++) {
+                if (izKorpe[i].id == id) {
+                    izKorpe[i].kolicina = newValue;
+                }
+            }
+        dodajULS("knjigeKorpa", izKorpe);
+        korpaIspis();
+        brojStavkiUKorpi();
+    }
+
+    
+
+    
+
+
+
 
 
     let url = window.location.pathname;
-    // if(url == '/' || url == '/index.html') {
-    //     dohvatiPodatke("autori", ispisAutoraUFokusu);
-	// }
 	if(url.indexOf('knjige') != -1) {
         promeniBrojURedu();
 	    dohvatiPodatke("zanrovi", prikaziZanrove);
@@ -24,13 +47,13 @@ window.onload = () =>{
 
 	}
     else if(url.indexOf('korpa') != -1) {
-
+        korpaIspis();
 	}
     else{
         dohvatiPodatke("autori", ispisAutoraUFokusu);
     }
 
-
+    
 
     $(".navbar-toggler").click(function(){
         $("#responsive-meni")
@@ -205,7 +228,7 @@ window.onload = () =>{
 		let html = "";
 		for(let knjiga of podaci){
 			html+= `
-			<div class="col-lg-4 col-sm-6 col-10 mb-4 prikazURedu">
+			<div class="col-lg-3 col-sm-6 col-10 mb-4 prikazURedu">
                 <div class=" h-100">
                     <img class="card-img-top" src="assets/img/${knjiga.slika.src}" alt="${knjiga.slika.alt}">
                     <div class="card-body">
@@ -221,11 +244,12 @@ window.onload = () =>{
                 </div>
             </div>`;
 		}
+        knjige = podaci;
 		if(!podaci.length){
 			html += `<h2 class='text-center col-12'>Uuups!</h2>
                 <h2 class='text-center col-12'>Nema dostupnih knjiga za odabrani filter.</h2>
                 <div class='d-flex justify-content-around col-12'>
-                    <img src="assets/img/nemaProizvoda.jpg" alt="Nema proizvoda" class="img-fluid">
+                    <img src="assets/img/nemaDostupnihProizvoda.png" alt="Nema proizvoda" class="col-4">
                 </div>`;
 		}
 		$("#knjige").html(html);
@@ -316,7 +340,68 @@ window.onload = () =>{
         }, 3000);
     }
 
+    
+    function korpaIspis() {
+        let izKorpe = uzmiIzLS('knjigeKorpa');
+        let html = '';
+        if (izKorpe == null || izKorpe.length == 0) {
+            html = `<div class='d-flex justify-content-around'>
+                <img src="assets/img/praznaKorpa.png" alt="Nema proizvoda" class="col-lg-5 col-12 col-sm-8">
+                </div>
+                <h2 class='text-center col-12 p-50-0 text-secondary' >Vaša korpa je trenutno prazna. Želite nazad na kupovinu?</h2>
+                <div class="col-12 mb-5 d-flex justify-content-around">
+                    <a href="knjige.html" class="linkBtn">Povratak na kupovinu</a>
+                </div>`;
+            $("#korpaMain").html(html);
+        }
+        else{
+            dohvatiPodatke("knjige", obradaKorpe);
+            function obradaKorpe(podaci) {
+                ispisiKnjigeIzKorpe(podaci, izKorpe);
+            }
+            function ispisiKnjigeIzKorpe(podaci, podaciLS){
+                let knjigeKorpa = podaciLS;
+                let sveKnjige = podaci;
+                for (objLS of knjigeKorpa) {
+                    for (objKnjiga of sveKnjige) {
+                        if (objLS.id == objKnjiga.id) {
+                            html += `<tr>
+                                    <th scope="row" class="align-middle text-dark"><button class="obrisiIzKorpe brd-none" data-id="${objKnjiga.id}" ><i  class="fas fa-trash-alt align-center"></i></button></th>
+                                    <td class="align-middle text-dark w-25"><img class="w-25" src="assets/img/${objKnjiga.slika.src}" alt="${objKnjiga.slika.alt}"></td>
+                                    <td class="align-middle text-dark">${objKnjiga.naslov}</td>
+                                    <td class="align-middle text-dark">${prikazCenaKorpa(objKnjiga.cena)}</td>
+                                    <td class="align-middle text-dark"><input class="pl-2 kolicina" data-id="${objKnjiga.id}"" type="number" min="1" max="99" step="1" value="${objLS.kolicina}"></td>
+                                    <td class="align-middle text-dark">${objLS.kolicina*prikazCenaKorpa(objKnjiga.cena)}</td>
+                                </tr>`;
+                        }
+                    }
+                }
+                $("#tbody").html(html);
+            }
+            
+            function prikazCenaKorpa(cena) {
+                let original = parseInt(cena.original);
+                let popust = parseInt(cena.popust)/100;
 
+                if (popust != 0) {
+                    return parseInt(original - original * popust);
+                }
+                else{
+                    return original;
+                }
+            }
+        }
+    }
+    function obrisiIzKorpe(id) {
+        let izKorpe = uzmiIzLS('knjigeKorpa');
+
+        let rezultat = izKorpe.filter(c => c.id != id);
+        
+        dodajULS("knjigeKorpa", rezultat);
+        korpaIspis();
+        brojStavkiUKorpi();
+
+    }
 
 
 
@@ -383,9 +468,9 @@ window.onload = () =>{
     function dostupnostFilter(podaci){
 		var dostupnost = $("input[name='stanje']:checked").val();
 		if(dostupnost == "dostupno"){
-            console.log(123);
 			return podaci.filter(x => x.naStanju);
-		}if(dostupnost == "nedostupno"){
+		}
+        if(dostupnost == "nedostupno"){
 			return podaci.filter(x => !x.naStanju);
 		}
 		return podaci;
@@ -420,6 +505,8 @@ window.onload = () =>{
 	}
 
 
+
+    
 
 
 
