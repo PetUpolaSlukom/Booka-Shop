@@ -36,14 +36,6 @@ window.onload = () =>{
 
     
 
-    $(".navbar-toggler").click(function(){
-        $("#responsive-meni")
-            .css({
-                "left" : "0",
-                "top" : `${$(".navbar").height()}px`
-            })
-            .toggle();
-    });
 
     var knjige = [];
     var zanrovi = [];
@@ -63,13 +55,22 @@ window.onload = () =>{
 		});
     }
 
+    $(document).on("click",".navbar-toggler",function(){
+        $("#responsive-meni")
+            .css({
+                "left" : "0",
+                "top" : `${$(".navbar").height()}px`
+            })
+            .toggle();
+    });
 
 
 
     function ispisHeaderFooter(podaci){
+        
+    
 
         var meniNiz = podaci;
-        console.log(meniNiz);
         
         htmlNav = `<div id="responsive-meni" class="w-100 position-absolute d-md-none">
                     <ul id="responsive-meni-ul" class="navbarMenu-ul bg-light w-100 text-center">
