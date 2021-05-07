@@ -11,45 +11,20 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-    <!--<meta name="keywords" content="gavaltron, prodaja, namestaja, kontakt, cena"/>
-	    <meta name="description" content="Mi menjamo način izrade nameštaja, povezujući kupce sa lokalnim proizvođačima."> -->
+    <meta name="keywords" content="knjizara, booka, narucivanje, korpa, cena"/>
+	<meta name="description" content="Poručite jako jednostavno i bryo. Vaša pošiljka dolayi na Vašu adresu u roku od 2 dana!">
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark d-flex justify-content-around">
-        <div id="responsive-meni" class="w-100 position-absolute d-md-none">
-          <ul id="responsive-meni-ul" class="navbarMenu-ul bg-light w-100 text-center">
-              
-          </ul>
-        </div>
-    
-        <button class="navbar-toggler">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <a href="index.html" class="navbar-brand"><img src="assets/img/logo.png" class="mw-100" alt="logo"/></a>
-    
-        <div class="collapse navbar-collapse nav-pills col-md-4" id="navbarMenu">
-            <ul id="nav-meni-ul" class="navbarMenu-ul navbar-nav container justify-content-around">
-                
-            </ul> 
-        </div>
-        <a id="korpaLink"  href="#">
-            <button type="button" id="korpa" class="btn btn-lg">
-                <span class="fa fa-shopping-cart" aria-hidden="true"></span>
-                <span class="cart-count">0</span>
-            </button>
-        </a>
+        
     </nav>
-    <div class="help"></div>    
-
-
-
+    <div class="help"></div>  
     <div class="naslovna-pozadina col-12 p-50-0">
         <span class="col-12 text-center align-middle p-50-0">
             <h1 class="p-50-0 text-white">KORPA</h1>
         </span>
     </div>
-
+<!--MAIN-->
     <div class="col-12" id="korpaMain">
         <div class="container text-white mt-5 mb-5 p-0" id="korpaSpisak">
             <table class="table table-hover table-striped">
@@ -68,8 +43,9 @@
                 </tbody>
             </table>
         </div>
-        <div class="d-flex align-items-center flex-column py-3 mt-5">
-            <input type="button" id="buttonObrisiKorpu" class="btn linkBtn float-left" value="Završi porudžbinu">
+        <div class="container py-3 mt-5">
+            <button type="button" id="buttonObrisiKorpu" class="btn linkBtn float-left" value="Obriši sve iz korpe">
+            <i class="fas fa-trash-alt align-center text-dark"></i> Obriši sve iz korpe</button>
         </div>
     </div>
     <div class="col-12 p-50-0 d-flex flex-wrap justify-content-around" id="korpaNarucivanje">
@@ -100,55 +76,26 @@
         </div>
         <div class="col-md-5 col-12 container p-50-0">
             <h2>PODACI ZA PLAĆANJE</h2> 
-            <form name="kontakt" id="porucivanje" class="col-12 py-5" method="GET" action="#">
+            <form name="korpa" id="porucivanje" class="col-12 py-5" method="GET" action="#">
                 <div class="container-fluid col-12">
                     <div>
-                        <input type="text" name="name" id="namePorucivanje" class="container brd-none  py-3" placeholder="Ime i prezime">
+                        <input type="text" name="name" id="name" class="container brd-none  py-3" placeholder="Ime i prezime">
                     </div>
                     <div>
-                        <input type="email" name="mail" id="mailPorucivanje" class="container brd-none   py-3 mt-2" placeholder="Email">
+                        <input type="email" name="mail" id="mail" class="container brd-none   py-3 mt-2" placeholder="Email">
                     </div>
                     <div>
-                        <input type="text" id="adresaPorucivanje" class="container brd-none py-3 mt-2" placeholder="Adresa i Grad">
+                        <input type="text" id="adresa" class="container brd-none py-3 mt-2" placeholder="Adresa i Grad">
                     </div>
                     <div class="d-flex align-items-center flex-column py-3 mt-5">
-                        <input type="submit" id="button" class="btn linkBtn" value="Završi porudžbinu">
+                        <input type="submit" id="buttonPotvrdiPorudzbinu" class="btn linkBtn" value="Završi porudžbinu">
                     </div>      
                 </div>
                 
             </form>
         </div>
     </div>
-    
-
-
-
-
-
-
-
-
-
-    <footer class="col-12 d-flex justify-content-around">
-        <div class="col-9 d-flex flex-wrap justify-content-around">
-            <div class="col-sm-3 pt-5">
-                <h3 calss="text-white">MENI</h3>
-                <ul id="footer-meni-ul" class="navbarMenu-ul navbar-nav container d-inline">
-                    
-                </ul> 
-            </div>
-            <div class="col-sm-3 pt-5">
-                <h3 calss="text-white">LINKOVI</h3>
-                <ul id="links" class="navbarMenu-ul navbar-nav container">
-
-                </ul> 
-            </div>    
-            <div class="col-sm-3 col-10 pt-5 text-center">
-                <h3 calss="text-white">BOOKA STORE</h3>
-                <a href="index.html"><img class="img-fluid pt-4 pb-4" src="assets/img/logoKrug.png" alt="Booka"></a>  
-                <p class="cena">Đorđe Minić 135 / 19</p>
-            </div>
-        </div>
+    <footer class="footer col-12 d-flex justify-content-around">
         
     </footer>
 

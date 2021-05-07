@@ -1,6 +1,6 @@
 window.onload = () =>{
 
-    ispisHeaderFooter();
+    dohvatiPodatke("meni", ispisHeaderFooter);
     brojStavkiUKorpi();
 
     
@@ -14,27 +14,8 @@ window.onload = () =>{
         promenaKolicine($(this).data('id'), $(this).val());
     });
 
-    function promenaKolicine(id, val) {
-        let newValue = parseInt(val);
-        let izKorpe = uzmiIzLS('knjigeKorpa');
-            for (let i=0; i<izKorpe.length; i++) {
-                if (izKorpe[i].id == id) {
-                    izKorpe[i].kolicina = newValue;
-                }
-            }
-        dodajULS("knjigeKorpa", izKorpe);
-        korpaIspis();
-        brojStavkiUKorpi();
-    }
 
     
-
-    
-
-
-
-
-
     let url = window.location.pathname;
 	if(url.indexOf('knjige') != -1) {
         promeniBrojURedu();
@@ -85,35 +66,79 @@ window.onload = () =>{
 
 
 
-    function ispisHeaderFooter(){
-        let meniNiz = [
-            ["index.html", "Početna"],
-            ["knjige.html", "Knjige"],
-            ["kontakt.html", "Kontakt"],
-            ["autor.html", "Autor"]
-        ]
-        let meniR = document.querySelector("#responsive-meni-ul");
-        let meniN = document.querySelector("#nav-meni-ul");
-        let meniF = document.querySelector("#footer-meni-ul");
+    function ispisHeaderFooter(podaci){
+
+        var meniNiz = podaci;
+        console.log(meniNiz);
         
-        html = ''
+        htmlNav = `<div id="responsive-meni" class="w-100 position-absolute d-md-none">
+                    <ul id="responsive-meni-ul" class="navbarMenu-ul bg-light w-100 text-center">
+                        ${meniIspis()}
+                    </ul>
+                </div>
+                <button class="navbar-toggler">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a href="index.html" class="navbar-brand"><img src="assets/img/logo.png" class="mw-100" alt="Booka logo"/></a>
+                <div class="collapse navbar-collapse nav-pills col-md-4" id="navbarMenu">
+                    <ul id="nav-meni-ul" class="navbarMenu-ul navbar-nav container justify-content-around">
+                        ${meniIspis()}
+                    </ul> 
+                </div>
+                <a id="korpaLink"  href="korpa.html">
+                    <button type="button" id="korpa" class="btn btn-lg">
+                        <span class="fa fa-shopping-cart" aria-hidden="true"></span>
+                        <span class="cart-count">0</span>
+                    </button>
+                </a>`;
 
-        for (let i = 0; i < meniNiz.length; i++) {
-            html+= ` <li class="nav-item"><a href="${meniNiz[i][0]}" class="nav-link text-secondary">${meniNiz[i][1]}</a></li>`;
+        function meniIspis() {
+            
+            ispis = '';
+            for (let i = 0; i < meniNiz.length; i++) {
+                ispis+= ` <li class="nav-item"><a href="${meniNiz[i].url}" class="nav-link text-secondary">${meniNiz[i].naziv}</a></li>`;
+            }
+            return ispis;
         }
-        meniR.innerHTML = html;
-        meniN.innerHTML = html;
-        meniF.innerHTML = html;
 
-        let linkoviNiz = [
-            ["dokumentacija.pdf", "Dokumentacija"],
-            ["assets/js/main.js", "JavaScript"],
-            ["sitemap.xml", "Sitemap"]
-        ]
-        let links = document.querySelector("#links");
-        for (let i = 0; i < linkoviNiz.length; i++) {
-            links.innerHTML += ` <li class="nav-item"><a href="${linkoviNiz[i][0]}" class="nav-link text-secondary">${linkoviNiz[i][1]}</a></li>`;
+        let navbar = document.querySelector(".navbar");
+        navbar.innerHTML = htmlNav;
+
+
+        let htmlFoot = `<div class="col-9 d-flex flex-wrap justify-content-around">
+                            <div class="col-sm-3 pt-5">
+                                <h3 calss="text-white">MENI</h3>
+                                <ul id="footer-meni-ul" class="navbarMenu-ul navbar-nav container d-inline">
+                                    ${meniIspis()}
+                                </ul> 
+                            </div>
+                            <div class="col-sm-3 pt-5">
+                                <h3 calss="text-white">LINKOVI</h3>
+                                <ul id="links" class="navbarMenu-ul navbar-nav container">
+                                    ${linkIspis()}
+                                </ul> 
+                            </div>    
+                            <div class="col-sm-3 col-10 pt-5 text-center">
+                                <h3 calss="text-white">BOOKA STORE</h3>
+                                <a href="index.html"><img class="img-fluid pt-4 pb-4" src="assets/img/logoKrug.png" alt="Booka logo"></a>  
+                                <p class="cena">Đorđe Minić 135 / 19</p>
+                            </div>
+                        </div>`
+                            
+        function linkIspis() {
+            let linkoviNiz = [
+                ["dokumentacija.pdf", "Dokumentacija"],
+                ["assets/js/main.js", "JavaScript"],
+                ["sitemap.xml", "Sitemap"]
+            ]
+            ispis = '';
+            for (let i = 0; i < linkoviNiz.length; i++) {
+                ispis += ` <li class="nav-item"><a href="${linkoviNiz[i][0]}" class="nav-link text-secondary">${linkoviNiz[i][1]}</a></li>`;
+            }
+            return ispis;
         }
+        let footeri = document.querySelector(".footer");
+        footeri.innerHTML = htmlFoot;
 
     }
 
@@ -353,6 +378,7 @@ window.onload = () =>{
                     <a href="knjige.html" class="linkBtn">Povratak na kupovinu</a>
                 </div>`;
             $("#korpaMain").html(html);
+            $("#korpaNarucivanje").html('');
         }
         else{
             dohvatiPodatke("knjige", obradaKorpe);
@@ -430,7 +456,19 @@ window.onload = () =>{
         korpaIspis();
         brojStavkiUKorpi();
     }
-
+    
+    function promenaKolicine(id, val) {
+        let newValue = parseInt(val);
+        let izKorpe = uzmiIzLS('knjigeKorpa');
+            for (let i=0; i<izKorpe.length; i++) {
+                if (izKorpe[i].id == id) {
+                    izKorpe[i].kolicina = newValue;
+                }
+            }
+        dodajULS("knjigeKorpa", izKorpe);
+        korpaIspis();
+        brojStavkiUKorpi();
+    }
 
 
     function prikazZanrovi(ids){
@@ -553,6 +591,8 @@ window.onload = () =>{
         forma.reset();
 
     }
+
+
     function inputPrazno(element, naziv){
         if(element.value.length == 0){
             greska(element,`Polje za ${naziv} ne sme biti prazno.`);
@@ -562,12 +602,80 @@ window.onload = () =>{
     }
     let regImePrezime = /^[A-ZŠĐŽĆČ][a-zšđžćč]{2,15}(\s[A-ZŠĐŽĆČ][a-zšđžćč]{2,15}){0,2}$/;
     let regEmail = /^[a-z]((\.|-|_)?[a-z0-9]){2,}@[a-z]((\.|-|_)?[a-z0-9]+){2,}\.[a-z]{2,6}$/i;
+    let regAdresa = /^[\w\.]+(,?\s[\w\.]+){2,8}$/;
 
 
+
+    //KORPA STRANA
+    $(document.korpa).on("submit", function(event){
+        validirajPorudzbinu(event);
+    });
     //KONTAKT STRANA
     $(document.kontakt).on("submit", function(event){
         validirajKontakt(event);
     });
+
+    function validirajPorudzbinu(event) {
+        event.preventDefault();
+        resetovanjeForme(document.korpa);
+                
+        let indikatorGreske = false;
+
+        //Ime i prezime
+        if(inputPrazno(document.korpa.name, "ime i prezime")){
+            indikatorGreske = true;
+        }
+        else {
+            if(!regImePrezime.test(document.korpa.name.value)){
+                greska(document.korpa.name,"Ime i prezime nisu dobro napisani.");
+                indikatorGreske = true;
+            }
+        }
+        //Email
+        if(inputPrazno(document.korpa.mail, "email adresu")){
+            indikatorGreske = true;
+        }
+        else {
+            if(!regEmail.test(document.korpa.mail.value)){
+                console.log(123);
+                greska(document.korpa.mail,"Imejl adresa nije dobro napisana.");
+                indikatorGreske = true;
+            }
+        }
+        //Adresa
+        if(inputPrazno(document.korpa.adresa, "adresu i grad")){
+            indikatorGreske = true;
+        }
+        else {
+            if(!regAdresa.test(document.korpa.adresa.value)){
+                greska(document.korpa.adresa,"Adresa nije dobro napisana.");
+                indikatorGreske = true;
+            }
+        }
+        if(!indikatorGreske){
+            localStorage.removeItem('knjigeKorpa');
+            uspesnaPorudzbina();
+            brojStavkiUKorpi();
+            $("#korpaNarucivanje").html('');
+
+        }
+
+        function uspesnaPorudzbina() {
+            let html = '';
+                html = `<div class='d-flex justify-content-around'>
+                    <img src="assets/img/uspesnaPorudzbina.jpg" alt="Uspesna Porudzbina" class="col-lg-5 col-12 col-sm-8">
+                    </div>
+                    <h2 class='text-center col-12 p-50-0 text-secondary' >Vaša porudžbina je uspešno poslata! Očekujte da Vas kontaktiramo. Želite da nastavite kupovinu?</h2>
+                    <div class="col-12 mb-5 d-flex justify-content-around">
+                        <a href="knjige.html" class="linkBtn">Povratak na kupovinu</a>
+                    </div>`;
+                $("#korpaMain").html(html);
+                $("#korpaNarucivanje").html('');
+        }
+
+    }
+
+    
 
     function validirajKontakt(event){
         event.preventDefault();
@@ -607,9 +715,9 @@ window.onload = () =>{
                 indikatorGreske = true;
             }
         }
-        if(!indikatorGreske){
-            uspesno(document.kontakt, $("#button"), "Uspešno ste poslali poruku.");
-        }
+
+
+        
     }
     
 }

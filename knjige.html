@@ -11,86 +11,56 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-    <!--<meta name="keywords" content="gavaltron, prodaja, namestaja, kontakt, cena"/>
-	    <meta name="description" content="Mi menjamo način izrade nameštaja, povezujući kupce sa lokalnim proizvođačima."> -->
+    <meta name="keywords" content="knjizara, booka, knjige, ponuda, cena"/>
+	<meta name="description" content="Najveća ponuda knjiga savremene književnosti na jednom mestu. ">
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark d-flex justify-content-around">
-        <div id="responsive-meni" class="w-100 position-absolute d-md-none">
-          <ul id="responsive-meni-ul" class="navbarMenu-ul bg-light w-100 text-center">
-              
-          </ul>
-        </div>
-    
-        <button class="navbar-toggler">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <a href="index.html" class="navbar-brand"><img src="assets/img/logo.png" class="mw-100" alt="logo"/></a>
-    
-        <div class="collapse navbar-collapse nav-pills col-md-4" id="navbarMenu">
-            <ul id="nav-meni-ul" class="navbarMenu-ul navbar-nav container justify-content-around">
-                
-            </ul> 
-        </div>
-        <a id="korpaLink"  href="korpa.html">
-            <button type="button" id="korpa" class="btn btn-lg">
-                <span class="fa fa-shopping-cart" aria-hidden="true"></span>
-                <span class="cart-count">0</span>
-            </button>
-        </a>
+        
     </nav>
     <div class="help"></div>
-
-    <!-- MAIN -->
     <div class="naslovna-pozadina col-12 p-50-0">
         <span class="col-12 text-center align-middle p-50-0">
             <h1 class="p-50-0 text-white">KNJIGE</h1>
         </span>
     </div>
+    <!-- MAIN -->
     <div id="knjigeMain" class="min-vh-100 m-0-auto p-50-0 d-flex justify-content-around">
         <div class="col-xl-10">
             <div class="col-12">
                 <div class="row">
-                    <div class="col-lg-3">
-
+                    <div class="col-lg-3"> 
                     <!-- SORTIRANJE -->
                         <h2>SORTIRANJE</h2>
                         <select class="custom-select mb-5" id="sort">
                             <option value="asc" selected="">Prvo najjeftinije</option>
                             <option value="desc">Prvo najskuplje</option>
-                        </select>
-
-                        
-
-                        
+                        </select> 
                         <h2 class="col-12 p-0 prikaz">PRIKAZ</h2>
                         <button id="prikaz3" value="3" class="btn-deact p-3 col-5 prikaz">
                             <span class="font-weight-bold">Tri u redu</span>
                         </button>
                         <button id="prikaz4" value="4" class="mb-5 p-3 btn-act col-6 prikaz">
                             <span class="font-weight-bold">Cetiri u redu</span>
-                        </button>
-                        
-
-                        <!-- PRETRAGA -->
+                        </button> 
+                    <!-- PRETRAGA -->
                         <h2>PRETRAGA</h2>
                         <ul class="list-group mb-5 col-12 p-0">
                             <li class="list-group-item">
                                 <input type="search" id="pretraga" name="pretraga" placeholder="Pretrazi naslov...">
                             </li>
                         </ul>
-                        <!--ZANROVI-->
+                    <!--ZANROVI-->
                         <h2>ZANROVI</h2>
                         <ul class="list-group mb-5 col-12 p-0" id="zanrovi">
                             
                         </ul>
-                        <!--PISCI-->
+                    <!--PISCI-->
                         <h2>AUTORI</h2>
                         <ul class="list-group mb-5 col-12 p-0" id="pisci">
                             
-                        </ul>
-                        
+                        </ul> 
+                    <!--DOSTUPNOST-->
                         <h2>DOSTUPNOST</h2>
                         <ul class="list-group mb-5 col-12 p-0" id="naStanju">
                             <li class="list-group-item border border-0 pb-0">
@@ -104,6 +74,7 @@
                             </li>
                         </ul>
                     </div>
+                    <!--ISPIS KNJIGA-->
                     <div class="col-lg-9">
                         <div class="row" id="knjige">
                             
@@ -113,43 +84,7 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <footer class="col-12 d-flex justify-content-around">
-        <div class="col-9 d-flex flex-wrap justify-content-around">
-            <div class="col-sm-3 pt-5">
-                <h3 calss="text-white">MENI</h3>
-                <ul id="footer-meni-ul" class="navbarMenu-ul navbar-nav container d-inline">
-                    
-                </ul> 
-            </div>
-            <div class="col-sm-3 pt-5">
-                <h3 calss="text-white">LINKOVI</h3>
-                <ul id="links" class="navbarMenu-ul navbar-nav container">
-                    <!-- <li class="nav-item"><a href="index.html" class="nav-link text-secondary">Dokumentacija</a></li>
-                    <li class="nav-item"><a href="index.html" class="nav-link text-secondary">main.js</a></li>
-                    <li class="nav-item"><a href="index.html" class="nav-link text-secondary">Sitemap</a></li> -->
-                </ul> 
-            </div>    
-            <div class="col-sm-3 col-10 pt-5 text-center">
-                <h3 calss="text-white">BOOKA STORE</h3>
-                <a href="index.html"><img class="img-fluid pt-4 pb-4" src="assets/img/logoKrug.png" alt="Booka"></a>  
-                <p class="cena">Đorđe Minić 135 / 19</p>
-            </div>
-        </div>
+    <footer class="footer col-12 d-flex justify-content-around">
         
     </footer>
 

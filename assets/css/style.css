@@ -113,14 +113,6 @@ nav #korpa #cart-count {
   color: #fff;
 }
 
-.autor:hover, .bg-my {
-  background-color: #CD40E617;
-}
-
-.autor:hover {
-  cursor: pointer;
-}
-
 footer {
   background-color: #191919;
 }

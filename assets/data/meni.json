@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "naziv": "Početna",
+        "url": "index.html"
+    },
+    {
+        "id": 2,
+        "naziv": "Knjige",
+        "url": "knjige.html"
+    },
+    {
+        "id": 3,
+        "naziv": "Kontakt",
+        "url": "kontakt.html"
+    },
+    {
+        "id": 4,
+        "naziv": "Autor",
+        "url": "autor.html"
+    }
+]
