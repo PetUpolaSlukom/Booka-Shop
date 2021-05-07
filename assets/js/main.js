@@ -134,7 +134,7 @@ window.onload = () =>{
             ]
             ispis = '';
             for (let i = 0; i < linkoviNiz.length; i++) {
-                ispis += ` <li class="nav-item"><a href="${linkoviNiz[i][0]}" class="nav-link text-secondary">${linkoviNiz[i][1]}</a></li>`;
+                ispis += ` <li class="nav-item"><a href="${linkoviNiz[i][0]}" target="_blanc"class="nav-link text-secondary">${linkoviNiz[i][1]}</a></li>`;
             }
             return ispis;
         }
@@ -716,7 +716,9 @@ window.onload = () =>{
                 indikatorGreske = true;
             }
         }
-
+        if (!indikatorGreske) {
+            uspesno(document.kontakt, document.kontakt.button, "Poruka je uspešno poslata!")
+        }
 
         
     }
