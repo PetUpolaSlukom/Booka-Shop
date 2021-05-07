@@ -80,7 +80,7 @@ window.onload = () =>{
                 <button class="navbar-toggler">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a href="index.html" class="navbar-brand"><img src="assets/img/logo.png" class="mw-100" alt="Booka logo"/></a>
+                <a href="index.html" class="navbar-brand col-5"><img src="assets/img/logo.png" class="img-fluid" alt="Booka logo"/></a>
                 <div class="collapse navbar-collapse nav-pills col-md-4" id="navbarMenu">
                     <ul id="nav-meni-ul" class="navbarMenu-ul navbar-nav container justify-content-around">
                         ${meniIspis()}
